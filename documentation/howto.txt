@@ -15,13 +15,13 @@ Open the browser and enter url http://hostname/api/sm360 to see available routes
 		Method	: GET
 	- Create a new listing 					: /api/sm360/listing/new
 		Method		: POST
-		parameters 	: 
+		body parameters 	: 
 			dealerId,
 			vehicle,
 			price
 	- Update a listing						: /api/sm360/listing/{listingId}
 		Method	: PUT
-		parameters 	: 
+		body parameters 	: 
 			dealerId,
 			vehicle,
 			price,
@@ -34,11 +34,11 @@ Open the browser and enter url http://hostname/api/sm360 to see available routes
 		Method	: GET
 	- Publish a listing						: /api/sm360/listing/publish/{listingId}/{dealerId}
 		Method		: PATCH
-		parameter	:
+		body parameter	:
 			state
 	- Unpublish a listing					: /api/sm360/listing/publish/{listingId}
 		Method		: PATCH
-		parameter	:
+		body parameter	:
 			state	
 
 	
@@ -47,7 +47,7 @@ Open the browser and enter url http://hostname/api/sm360 to see available routes
 			Method	: GET
 		- Register a new dealer 				: /api/sm360/dealer/new
 			Method		: POST
-			parameters 	: 
+			body parameters 	: 
 				name,
 				phone,
 				email
@@ -57,7 +57,7 @@ Open the browser and enter url http://hostname/api/sm360 to see available routes
 			Method	: GET
 		- Register a new tier limit 					: /api/sm360/tierslimit/new
 			Method		: POST
-			parameters 	: 
+			body parameters 	: 
 				dealerId,
 				nbOfPublishedListing
 				
