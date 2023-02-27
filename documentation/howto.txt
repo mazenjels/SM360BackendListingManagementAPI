@@ -18,7 +18,8 @@ Open the browser and enter url http://hostname/api/sm360 to see available routes
 		body parameters 	: 
 			dealerId,
 			vehicle,
-			price
+			price,
+			state (optional because  "draft" is set by default)
 	- Update a listing						: /api/sm360/listing/{listingId}
 		Method	: PUT
 		body parameters 	: 
