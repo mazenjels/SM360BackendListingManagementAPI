@@ -1,1 +1,72 @@
 # SM360BackendListingManagementAPI
+
+-- How to run sms360-listing-api ---
+
+This rest api runs under Postgresql v10 as database
+
+Set up configuration in application.properties according to your environnement
+
+The project is tested as jar  file not war to be deployed in a web server such as Wildfly as i'm used to
+
+Open the browser and enter url http://hostname/api/sm360 to see available routes
+
+----------- Available api modules : Listing, Dealer, Tier limit ------------------------
+0. Help										:/
+1. Listing
+	- Get all listings 						: /api/sm360/listings
+		Method	: GET
+	- Create a new listing 					: /api/sm360/listing/new
+		Method		: POST
+		parameters 	: 
+			dealerId,
+			vehicle,
+			price
+	- Update a listing						: /api/sm360/listing/{listingId}
+		Method	: PUT
+		parameters 	: 
+			dealerId,
+			vehicle,
+			price,
+			state (state is draft by default)
+	- Get a listing by id					: /api/sm360/listing{id}
+		Method	: GET
+	- Find all listings by dealer 			: /api/sm360/findByDealerId?dealerId={dealerId}
+		Method	: GET
+	- Get all listings of a dealer with a given state	: /api/sm360/findByDealerIdAndState?dealerId={dealerId}&state={state}
+		Method	: GET
+	- Publish a listing						: /api/sm360/listing/publish/{listingId}/{dealerId}
+		Method		: PATCH
+		parameter	:
+			state
+	- Unpublish a listing					: /api/sm360/listing/publish/{listingId}
+		Method		: PATCH
+		parameter	:
+			state	
+
+	
+	2. Dealer
+		- Get all dealers 						: /api/sm360/dealers
+			Method	: GET
+		- Register a new dealer 				: /api/sm360/dealer/new
+			Method		: POST
+			parameters 	: 
+				name,
+				phone,
+				email
+
+3. Tier limit
+		- Get a dealer's tier limit 					: /api/sm360/tierslimit/{dealerId}
+			Method	: GET
+		- Register a new tier limit 					: /api/sm360/tierslimit/new
+			Method		: POST
+			parameters 	: 
+				dealerId,
+				nbOfPublishedListing
+				
+
+------------------------------------------------------------------------------
+Notes:
+	- The number of published listings for a dealer is less or equal to the dealer's tier limit
+	- Only a draft listing can be published. A listing already published can no longer be published. An error is returned with a message related
+	- When the number of published listing is reached, an error is returned to the client with a message related to the tier limit
+	-The log file is located to the Logs folder
